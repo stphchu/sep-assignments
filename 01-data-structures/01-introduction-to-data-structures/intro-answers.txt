@@ -1,0 +1,26 @@
+1. How does your data structure allow developers to access and manipulate the data?
+
+  For the 'line' scenario, I used an array to structure the data. It allows developers
+  to access and manipulate the data in a linear fashion (e.g. everything gets shifted
+  if one of the elements get removed, things are ordered chronologically by when they're
+  added, and etc.) -- similar to how lines work in real-world situations.
+
+  For the 'screen' scenario, I used a multidimensional array to structure the data.
+  It allows developers to access and manipulate the data in a matrix-like structure
+  (similar to an actual screen in which each pixel is given color information).
+
+
+2. If a developer wanted to find a specific element in your data structure, how would you search for it?
+
+  If a developer wanted to find a specific element in the 'line' data structure, they would
+  need to search through the array in a linear way, each element at a time. For the 'screen'
+  scenario, the developer would need to search through the multidimensional array recursively
+  (using nested conditional checks) to find the "coordinates" (x, y) of where the data is stored.
+
+
+3. What other real-world data can each structure represent?
+
+  The regular array could also represent the order of library patrons who have placed
+  a hold on books (with their place in line representing who has priority to the book next).
+  The multidimensional array could also represent tables at restaurant (showing which
+  ones are occupied or vacant).
