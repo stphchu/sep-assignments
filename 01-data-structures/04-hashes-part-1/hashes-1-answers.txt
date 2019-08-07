@@ -1,0 +1,5 @@
+- Explain why doubling the size of the underlying array of your 'HashClass' may be a poor idea.
+
+  - Doubling the size of the underlying array might be a poor idea because the addition
+    of all the empty slots (that may or may not be filled) can lead to more fragmentation.
+    Additionally, increasing the size of an array (thus, allocating memory) is a slow operation.
