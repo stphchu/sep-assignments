@@ -1,0 +1,25 @@
+1. Describe three collision resolution strategies not mentioned here.
+  - Robin Hood Hashing:
+      In this method, when adding new items, any existing item that is closer
+      to its index gets replaced by the new item. The process continues in the
+      same manner but with the item that was just replaced.
+
+  - Hopscotch Hashing:
+      This method works by grouping each bucket (B) in a neighborhood (H) (a small
+      collection of nearby buckets with close indices to the original
+      hashed bucket). From the bucket (i) linear probing is done to search for
+      an empty bucket(j). If (j) is in the neighborhood of (i) (i.e. j - i < H),
+      it gets inserted there. If not, the method will try to find an item that's
+      closer, swapping the bucket for the item (y) with the empty bucket (j)
+      until (j) is in the neighborhood of (i).
+
+
+  - Coalesced Hashing:
+      This method is a combination of both Open Addressing and Separate Chaining.
+      It uses Open Addressing (linear probing) to find the first empty place for
+      colliding element from the last index of the hash table and then uses Separate
+      Chaining to link the colliding elements to each other through pointers.
+
+2. Create your own collision resolution strategy and describe how it works.
+  - A collision resolution strategy I might use would be if a collision occurs,
+    the method would take the key and divide it by 2 and insert it in that index.
