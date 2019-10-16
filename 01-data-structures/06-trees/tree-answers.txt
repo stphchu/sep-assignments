@@ -1,0 +1,44 @@
+1. Print both Trees to the console and compare the difference between your
+Binary Search Tree and your Heap.
+
+  - One difference between the two is that in the Binary Search Tree, the nodes
+  can be inserted on either side, left or right, of the root (and/or its branches),
+  whereas in the Heap, each level has to be "complete" before a new one is created
+  (i.e. the nodes/branches gets added from left to right without any empty nodes on
+  the left).
+
+2. Insert all numbers from 1 to 100000 into both Trees, then use Benchmark
+to compare performance:
+    - How much time does an average insertion consume in the Binary Search Tree
+    compared to the Heap?
+      - The average time it takes for insertion in the Binary Search Tree is 1.03
+      versus 1.45 using the Heap.
+
+    - How much time does finding 50000 in the Binary Search Tree consume
+    compared to the Heap?
+      - Finding 50000 (*2500) takes more time using the Binary Search Tree (.002)
+      than it does using Heap (.001).
+
+    - How much time does the average deletion consume in a Binary Search Tree
+    compared to the Heap?
+      - The average deletion time is .00198 in a Binary Search Tree (compared
+      to .00195 in the Heap). However, running the benchmark a few times the two
+      seem to fluctuate between which takes slightly more time (though, on average
+      it seems like they're roughly the same).
+
+    - When would you use a Binary Search Tree and why?
+      - I would probably use a Binary Search Tree when I need to insert a large
+      number of items to the tree because, as shown in the benchmark, it's faster
+      than inserting into a Heap.
+
+    - When would you use a Heap and why?
+      - I would use a Heap when I need to find an item quickly within the tree
+      because it is faster than searching through a Binary Search Tree.
+
+                              user     system      total        real
+Binary Tree (Insert):      1.031250   0.000000   1.031250 (  1.030650)
+Min Binary Heap (Insert):  1.453125   0.000000   1.453125 (  1.450514)
+Binary Tree (Find):        0.000000   0.000000   0.000000 (  0.002240)
+Min Binary Heap (Find):    0.000000   0.000000   0.000000 (  0.001990)
+Binary Tree (Delete):      0.000000   0.000000   0.000000 (  0.001984)
+Min Binary Heap (Delete):  0.000000   0.000000   0.000000 (  0.001952)
