@@ -76,7 +76,7 @@ RSpec.describe SixDegreesOf, type: Class do
     charlize_theron.film_actor_hash["Mad Max: Fury Road"] = [nicholas_hoult, zoe_kravitz]
     charlize_theron.film_actor_hash["Atomic Blonde"] = [james_mcavoy, john_goodman, bill_skarsgard]
 
-    chris_hemsworth.film_actor_hash["Snowwhite and the Huntsman"] = [charlize_theron, kristen_stewart]
+    chris_hemsworth.film_actor_hash["Snow White and the Huntsman"] = [charlize_theron, kristen_stewart]
     chris_hemsworth.film_actor_hash["The Huntsman: Winter's War"] = [charlize_theron, jessica_chastain]
 
     domhnall_gleeson.film_actor_hash["Never Let Me Go"] = [carey_mulligan, andrew_garfield, sally_hawkins, keira_knightley, charlotte_rampling]
@@ -172,12 +172,12 @@ RSpec.describe SixDegreesOf, type: Class do
       end
     end
 
-    # describe "testing Kevin Bacon as starting node" do
-    #   it "returns a message that Kevin Bacon is 0 degrees from himself" do
-    #     six_degrees_of = SixDegreesOf.new
-    #     expect(six_degrees_of.find_kevin_bacon(kevin_bacon)).to eq("Kevin Bacon is 0 degrees from himself.")
-    #   end
-    # end
+    describe "testing Kevin Bacon as starting node" do
+      it "returns a message that Kevin Bacon is 0 degrees from himself" do
+        six_degrees_of = SixDegreesOf.new
+        expect(six_degrees_of.find_kevin_bacon(kevin_bacon)).to eq("Kevin Bacon is 0 degrees from himself.")
+      end
+    end
 
     describe "testing various actors as starting node" do
       it "returns correct array of movie for one degree" do
@@ -190,7 +190,7 @@ RSpec.describe SixDegreesOf, type: Class do
       end
       it "returns correct array of movies for two degrees" do
         six_degrees_of = SixDegreesOf.new
-        expect(six_degrees_of.find_kevin_bacon(bill_skarsgard)).to eq(["Atomic Blonde", "FootLoose"])
+        expect(six_degrees_of.find_kevin_bacon(kristen_stewart)).to eq(["Atomic Blonde", "FootLoose"])
       end
     end
 

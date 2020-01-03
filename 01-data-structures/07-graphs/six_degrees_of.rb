@@ -1,51 +1,40 @@
 require_relative 'node'
 
 class SixDegreesOf
-  attr_accessor :visited_actors
 
   def initialize
+    @movie_path = []
     @visited_actors = []
   end
 
   def find_kevin_bacon(starting_node)
-    movie_path = []
-    # return if starting_node == nil
+    return if starting_node == nil
+    return "Kevin Bacon is 0 degrees from himself." if starting_node.name == "Kevin Bacon"
     @visited_actors << starting_node.name
-    # if starting_node.name == "Kevin Bacon"
-    #   return "Kevin Bacon is 0 degrees from himself."
-    # end
+    next_actor = nil
+    next_movie = nil
 
     starting_node.film_actor_hash.each do |movie, actors_array|
       actors_array.each do |actor|
-        if actor.name == "Kevin Bacon"
-          movie_path << movie
+        return @movie_path << movie if actor.name == "Kevin Bacon"
+        unless @visited_actors.include?(actor.name)
+          next_actor = actor
         end
-        if !@visited_actors.include?(actor.name)
-          find_kevin_bacon(actor)
-          movie_path << movie
-        end
+      end
+
+      unless @movie_path.include?(movie)
+        next_movie = movie
       end
     end
 
-    if movie_path.uniq.size > 6
+    pp @movie_path.size
+    if @movie_path.size > 6
       return "This actor is more than six degrees of separation from Kevin Bacon."
     end
 
-  #   movie = next_movie(starting_node)
-  #
-  #   if movie == nil
-  #     return "Kevin Bacon cannot be found."
-  #   else
-  #     actor = starting_node.film_actor_hash[movie].first
-  #     find_kevin_bacon(actor)
-  #   end
-  # end
+    @movie_path << next_movie
+    find_kevin_bacon(next_actor)
 
-    # def find_next_movie(actor)
-    #   actor.film_actor_hash.keys.each do |movie|
-    #     return movie unless @movie_path.include?(movie)
-    #   end
-    # end
-    movie_path.uniq
+    @movie_path.compact
   end
 end
