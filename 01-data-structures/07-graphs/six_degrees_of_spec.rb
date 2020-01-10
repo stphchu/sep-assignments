@@ -33,7 +33,6 @@ RSpec.describe SixDegreesOf, type: Class do
   let (:matthias_schoenaerts) {Node.new("Matthias Schoenaerts")}
   let (:michael_stuhlbarg) {Node.new("Michael Stuhlbarg")}
   let (:michael_fassbender) {Node.new("Michael Fassbender")}
-  let (:naomie_harris) {Node.new("Naomie Harris")}
   let(:nicholas_hoult) {Node.new("Nicholas Hoult")}
   let (:octavia_spencer) {Node.new("Octavia Spencer")}
   let (:oscar_isaac) {Node.new("Oscar Isaac")}
@@ -95,7 +94,7 @@ RSpec.describe SixDegreesOf, type: Class do
     james_mcavoy.film_actor_hash["It Chapter 2"] = [jessica_chastain, bill_skarsgard]
     james_mcavoy.film_actor_hash["Atomic Blonde"] = [charlize_theron, john_goodman, bill_skarsgard]
 
-    janelle_monae.film_actor_hash["Moonlight"] = [mahershala_ali, naomie_harris]
+    janelle_monae.film_actor_hash["Moonlight"] = [mahershala_ali]
     janelle_monae.film_actor_hash["Hidden Figures"] = [octavia_spencer, mahershala_ali]
 
     jennifer_lawrence.film_actor_hash["X-Men: First Class"] = [kevin_bacon, james_mcavoy, michael_fassbender, nicholas_hoult, zoe_kravitz]
@@ -123,7 +122,7 @@ RSpec.describe SixDegreesOf, type: Class do
 
     lori_singer.film_actor_hash["FootLoose"] = [kevin_bacon, john_lithgow, john_goodman]
 
-    mahershala_ali.film_actor_hash["Moonlight"] = [janelle_monae, naomie_harris]
+    mahershala_ali.film_actor_hash["Moonlight"] = [janelle_monae]
     mahershala_ali.film_actor_hash["The Hunger Games: Mockingjay - Part 1"] = [jennifer_lawrence, julianne_moore]
     mahershala_ali.film_actor_hash["Hidden Figures"] = [octavia_spencer, janelle_monae]
 
@@ -138,8 +137,6 @@ RSpec.describe SixDegreesOf, type: Class do
 
     michael_fassbender.film_actor_hash["X-Men: First Class"] = [kevin_bacon, james_mcavoy, jennifer_lawrence, nicholas_hoult, zoe_kravitz]
     michael_fassbender.film_actor_hash["Shame"] = [carey_mulligan, james_badge_dale]
-
-    naomie_harris.film_actor_hash["Moonlight"] = [mahershala_ali, janelle_monae]
 
     nicholas_hoult.film_actor_hash["X-Men: First Class"] = [kevin_bacon, james_mcavoy, michael_fassbender, jennifer_lawrence, zoe_kravitz]
     nicholas_hoult.film_actor_hash["Mad Max: Fury Road"] = [charlize_theron, zoe_kravitz]
@@ -172,25 +169,25 @@ RSpec.describe SixDegreesOf, type: Class do
       end
     end
 
-    describe "testing Kevin Bacon as starting node" do
+    describe "Testing Kevin Bacon as the starting node" do
       it "returns a message that Kevin Bacon is 0 degrees from himself" do
         six_degrees_of = SixDegreesOf.new
         expect(six_degrees_of.find_kevin_bacon(kevin_bacon)).to eq("Kevin Bacon is 0 degrees from himself.")
       end
     end
 
-    describe "testing various actors as starting node" do
+    describe "Returns correct array/message" do
       it "returns correct array of movie for one degree" do
         six_degrees_of = SixDegreesOf.new
         expect(six_degrees_of.find_kevin_bacon(john_goodman)).to eq(["FootLoose"])
       end
-      it "returns correct array of movies for two degrees" do
+      it "returns correct array of movies for five degrees" do
         six_degrees_of = SixDegreesOf.new
-        expect(six_degrees_of.find_kevin_bacon(carey_mulligan)).to eq(["Shame", "X-men: First Class"])
+        expect(six_degrees_of.find_kevin_bacon(octavia_spencer)).to eq([""])
       end
-      it "returns correct array of movies for two degrees" do
+      it "returns correct output for an actor whose connection is greater than 6 degrees" do
         six_degrees_of = SixDegreesOf.new
-        expect(six_degrees_of.find_kevin_bacon(kristen_stewart)).to eq(["Atomic Blonde", "FootLoose"])
+        expect(six_degrees_of.find_kevin_bacon(kristen_stewart)).to eq("This actor has more than six degrees of separation from Kevin Bacon.")
       end
     end
 

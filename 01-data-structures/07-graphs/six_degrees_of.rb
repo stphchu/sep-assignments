@@ -21,20 +21,16 @@ class SixDegreesOf
           next_actor = actor
         end
       end
-
       unless @movie_path.include?(movie)
         next_movie = movie
       end
     end
 
-    pp @movie_path.size
-    if @movie_path.size > 6
-      return "This actor is more than six degrees of separation from Kevin Bacon."
-    end
-
-    @movie_path << next_movie
+    @movie_path << next_movie unless next_movie.nil?
     find_kevin_bacon(next_actor)
-
-    @movie_path.compact
+    if @movie_path.size > 6
+      return "This actor has more than six degrees of separation from Kevin Bacon."
+    end
+    @movie_path
   end
 end
