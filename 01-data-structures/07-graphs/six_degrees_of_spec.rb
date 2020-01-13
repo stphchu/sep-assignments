@@ -183,11 +183,16 @@ RSpec.describe SixDegreesOf, type: Class do
       end
       it "returns correct array of movies for five degrees" do
         six_degrees_of = SixDegreesOf.new
-        expect(six_degrees_of.find_kevin_bacon(octavia_spencer)).to eq([""])
+        expect(six_degrees_of.find_kevin_bacon(octavia_spencer)).to eq(["Hidden Figures", "Moonlight", "The Hunger Games: Mockingjay - Part 1", "X-Men: First Class"])
       end
       it "returns correct output for an actor whose connection is greater than 6 degrees" do
         six_degrees_of = SixDegreesOf.new
-        expect(six_degrees_of.find_kevin_bacon(kristen_stewart)).to eq("This actor has more than six degrees of separation from Kevin Bacon.")
+        expect(six_degrees_of.find_kevin_bacon(kristen_stewart)).to eq(["Snow White and the Huntsman", "Atomic Blonde", "X-Men: First Class"])
+      end
+
+      it "returns correct output for an actor whose connection is greater than 6 degrees" do
+        six_degrees_of = SixDegreesOf.new
+        expect(six_degrees_of.find_kevin_bacon(sally_hawkins)).to eq("This actor has more than six degrees of separation from Kevin Bacon.")
       end
     end
 
